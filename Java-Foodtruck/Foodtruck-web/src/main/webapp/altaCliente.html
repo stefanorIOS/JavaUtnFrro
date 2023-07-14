@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style/reset.css">
+    <link rel="stylesheet" href="style/header.css">
+    
+<title>Insert title here</title>
+</head>
+<body>
+	<header>
+        <div class="header">
+            <div class="header__container">
+                <nav><a>Logo</a></nav>
+                <nav><a>Pedidos</a></nav>
+                <nav><a>Productos</a></nav>
+                <nav><a href="administracion.html">Administración</a></nav>
+            </div>
+        </div>
+    </header>
+	
+	<form action="listadoclientes" method="post"">
+		<div>
+			<label>DNI</label>
+			<input name="dni" type="text" maxlength="8">
+		</div>
+		<div>
+			<label>Nombre</label>
+			<input name="nombre">
+		</div>
+		<div>
+			<label>Dirección</label>
+			<input name="direccion">
+		</div>
+		
+		<button type="submit">Agregar</button>
+		
+	</form>
+</body>
+</html>
