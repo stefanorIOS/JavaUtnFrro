@@ -1,5 +1,5 @@
 <%@page import="java.util.LinkedList"%>
-<%@page import="entities.Plato"%>
+<%@page import="entities.Bebida"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -11,7 +11,7 @@
 <meta charset="UTF-8">
 <title>Foodtruck</title>
 
-<%LinkedList<Plato> lp = (LinkedList<Plato>)request.getAttribute("listadoPlato"); %>
+<%LinkedList<Bebida> Be = (LinkedList<Bebida>)request.getAttribute("listadoBebida"); %>
 </head>
 <body>
 <header>
@@ -33,26 +33,23 @@
 			<thead>
 			<tr>
 				<th>Id</th>
-				<th>Nombre</th>
-				<th>Receta</th>
 				<th>Precio</th>
-				<th>Descripcion</th>
+				<th>Nombre</th>
+				<th>Litros</th>
 				<th></th>
 				<th></th>
 			</tr>
 			</thead>
 			<tbody>
-			<% for (Plato p : lp){ %>
+			<% for (Bebida b : Be){ %>
 				<tr>
-					<td><%=p.getId()%></td>
-					<td><%=p.getNombre()%></td>
-					<td><%=p.getReceta()%></td>
-					<td><%=p.getPrecio()%></td>
-					<td><%=p.getDescripcion()%></td>
-					<td><a href="editPlato?id=<%=p.getId()%>">editar</a></td>
-					<td><a href="DelPlato?id=<%=p.getId()%>">borrar</a></td>
-					<td class="link"><a href="#"><i class="fa-solid fa-pencil"></i></a></td>
-                    <td class="link"><a href="#"><i class="fa-regular fa-circle-xmark"></i></a></td>
+					<td><%=b.getId()%></td>
+					<td><%=b.getPrecio()%></td>
+					<td><%=b.getNombre()%></td>
+					<td><%=b.getLitros()%></td>
+					
+					<td><a href="editBebida?id=<%=b.getId()%>">editar</a></td>
+					<td><a href="DeleteBebida?id=<%=b.getId()%>">borrar</a></td>
 				</tr>
 				
 			<%} %>
@@ -62,7 +59,7 @@
 	</div>
 
 		
-		<a class="button" href="nuevoPlato.html">Nuevo Plato</a>
+		<a href="nuevaBebida.html">Nueva bebida</a>
 	</div>
 
 </body>

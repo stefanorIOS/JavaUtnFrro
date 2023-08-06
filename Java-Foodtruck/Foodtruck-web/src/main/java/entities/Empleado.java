@@ -1,11 +1,14 @@
 package entities;
 
+import java.util.LinkedList;
+
 public class Empleado {
 
 	private String dni;
 	private String nombre;
 	private String turno;
 	private String password;
+	private LinkedList<Rol> roles = new LinkedList<Rol>();
 	
 	public Empleado() {
 		
@@ -17,6 +20,15 @@ public class Empleado {
 		this.turno = turno;
 		this.password = p;
 	}
+	
+	public Empleado (String dni, String nombre, String turno, String p, LinkedList<Rol> r){
+		this.dni = dni;
+		this.nombre = nombre;
+		this.turno = turno;
+		this.password = p;
+		this.roles = r;
+	}
+	
 	
 	public String getDni() {
 		return dni;
@@ -48,6 +60,28 @@ public class Empleado {
 	
 	public String getPassword() {
 		return password;
+	}
+	
+	public void addRol(Rol rol) {
+		roles.add(rol);
+	}
+	
+	public LinkedList<Rol> getColeccionRoles(){
+		return roles;
+		
+	}
+	
+	public String getRoles() {
+		
+		String texto = "";
+		
+		for (Rol r : roles) {
+			
+			texto += r.getDesc()+"\n";
+		}
+		
+		return texto;
+		
 	}
 
 	

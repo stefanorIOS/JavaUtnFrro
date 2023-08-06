@@ -38,7 +38,7 @@
                     <th>DNI</th>
                     <th>Nombre</th>
                     <th>Turno</th>
-                    <th>Rol</th>
+                    <th>Roles</th>
                     <th>Editar</th>
                     <th>Borrar</th>
                 </tr>
@@ -49,7 +49,7 @@
                         <td><%=e.getDni()%></td>
                         <td><%=e.getNombre()%></td>
                         <td><%=e.getTurno() %></td>
-                        <td>Rol</td>
+                        <td><%= e.getRoles() %></td>
                         <td class="link"><a href="empleadoeditar?dni=<%=e.getDni()%>"><i class="fa-solid fa-pencil"></i></a></td>
                         <td class="link"><a href="empleadoborrar?dni=<%=e.getDni()%>"><i class="fa-regular fa-circle-xmark"></i></a></td>
                     </tr>

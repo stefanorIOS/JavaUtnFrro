@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style/reset.css">
+    <link rel="stylesheet" href="style/header.css">
+    <link rel="stylesheet" href="style/altaEmpleado.css">
+    <title>Foodtruck</title>
+</head>
+<body>
+    <header>
+        <div class="header">
+            <div class="header__container">
+                <nav><a>Logo</a></nav>
+                <nav><a>Pedidos</a></nav>
+                <nav><a>Productos</a></nav>
+                <nav><a href="administracion.html">Administración</a></nav>
+            </div>
+        </div>
+    </header>
+	<div class="form">
+        <form action="AltaBebida" method="POST">
+			
+            <div class="form__container">
+                <h1>Alta bebida</h1>
+                <div class="form__item">
+                    <label>ID</label>
+                    <input type="text" name="id"  maxlength="8">
+                </div>
+                  <div class="form__item">
+                    <label>precio</label>
+                    <input name="precio">
+                </div>
+                 <div class="form__item">
+                    <label>nombre</label>
+                    <input name="nombre">
+                </div>
+                 <div class="form__item">
+                    <label>litros</label>
+                    <input name="litros">
+                </div>
+                 <button class="button" type="submit">Agregar</button>
+               </div>
+        </form>
+        
+    </div>
+    
+</body>
+</html>

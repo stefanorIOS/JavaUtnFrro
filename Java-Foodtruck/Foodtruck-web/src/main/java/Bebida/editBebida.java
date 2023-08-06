@@ -1,4 +1,4 @@
-package Plato;
+package Bebida;
 
 import java.io.IOException;
 import java.util.LinkedList;
@@ -9,22 +9,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
-import data.PlatoDAO;
-
-import entities.Plato;
+import data.BebidaDAO;
+import entities.Bebida;
 
 /**
- * Servlet implementation class AltaPlato
+ * Servlet implementation class editBebida
  */
-@WebServlet({ "/AltaPlato", "/altaPlato", "/Altaplato", "/alta_Plato" })
-public class AltaPlato extends HttpServlet {
+@WebServlet("/editBebida")
+public class editBebida extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AltaPlato() {
+    public editBebida() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,12 +32,22 @@ public class AltaPlato extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-		//Listamos plato
-		PlatoDAO listadoPlato = new PlatoDAO();
-		LinkedList<Plato> platos = listadoPlato.getAll();
-		request.setAttribute("listadoPlato", platos);
-		request.getRequestDispatcher("WEB-INF/listadoPlatos.jsp").forward(request, response);
+		
+		int id = Integer.parseInt(request.getParameter("id"));
+		Bebida be = new Bebida();
+		be.setId(id);
+		request.setAttribute("be1", be);
+		
+		
+		
+		
+		
+		
+		request.getRequestDispatcher("WEB-INF/editBebida.jsp").forward(request, response);
+		
+		
+		
+		
 		
 	}
 
@@ -48,24 +56,22 @@ public class AltaPlato extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		
-		//doGet(request, response);
 		int id = Integer.parseInt(request.getParameter("id"));
-		String nombre = request.getParameter("nombre");
-		String receta = request.getParameter("receta");
 		float precio = Float.parseFloat(request.getParameter("precio"));
-		String descripcion = request.getParameter("descripcion");
+		String nombre = request.getParameter("nombre");
+		float litros = Float.parseFloat(request.getParameter("litros"));
 		
-		Plato p = new Plato();
-		p.PlatoC(id,nombre,receta,precio,descripcion);
+		Bebida nuevaBebida = new Bebida();
+		nuevaBebida.setId(id);
+		nuevaBebida.setLitros(litros);
+		nuevaBebida.setNombre(nombre);
+		nuevaBebida.setPrecio(precio);
+		BebidaDAO bebidadao = new BebidaDAO();
+		bebidadao.updateBebida(nuevaBebida);
 		
-		PlatoDAO pdao = new PlatoDAO();
+		response.sendRedirect("AltaBebida");
 		
-		pdao.newPlato(p);
 		
-		doGet(request, response);
-		
-		//agrega el producto pero NO lo muestra, se necesita arreglar eso, gracias
 	}
 
 }

@@ -11,7 +11,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import data.EmpleadoDAO;
+import data.RolDAO;
 import entities.Empleado;
+import entities.Rol;
 
 /**
  * Servlet implementation class ListadoEmpleados
@@ -35,6 +37,7 @@ public class ListadoEmpleados extends HttpServlet {
 		
 		EmpleadoDAO edao = new EmpleadoDAO();
 		LinkedList<Empleado> empleados = edao.getAll();
+		
 		request.setAttribute("listaEmpleados", empleados);
 		
 		request.getRequestDispatcher("WEB-INF/listadoEmpleados.jsp").forward(request, response);
@@ -50,9 +53,17 @@ public class ListadoEmpleados extends HttpServlet {
 		String nom = request.getParameter("nombre");
 		String tur = request.getParameter("turno");
 		String pass = request.getParameter("password");
+		String rol = request.getParameter("rol");
+		
+		Rol r = new Rol();
+		r.setDesc(rol);
+		
+		RolDAO rdao = new RolDAO();
+		r = rdao.getRolByDesc(r);
 		
 		EmpleadoDAO edao = new EmpleadoDAO();
 		Empleado e = new Empleado(dni,nom,tur,pass);
+		e.addRol(r);
 		edao.newEmpleado(e);
 		
 		doGet(request, response);

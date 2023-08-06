@@ -7,6 +7,7 @@ import java.sql.Statement;
 import java.util.LinkedList;
 
 import entities.Empleado;
+import entities.Rol;
 
 public class EmpleadoDAO {
 	
@@ -17,8 +18,9 @@ public class EmpleadoDAO {
 
 		try {
 			stmt = DbConnector.getInstancia().getConn().createStatement();
-			rs = stmt.executeQuery("SELECT * FROM Empleado");
-
+			rs = stmt.executeQuery("SELECT dniEmpleado, nombre, turno FROM Empleado");
+			RolDAO rdao = new RolDAO();
+			
 			if (rs != null) {
 				while (rs.next()) {
 
@@ -28,6 +30,8 @@ public class EmpleadoDAO {
 					e.setNombre(rs.getString("nombre"));
 					e.setTurno(rs.getString("turno"));
 
+					rdao.setRoles(e);
+					
 					empleados.add(e);
 				}
 
@@ -58,6 +62,7 @@ public class EmpleadoDAO {
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 		Empleado e = null;
+		RolDAO rdao = new RolDAO();
 		try {
 			stmt = DbConnector.getInstancia().getConn().prepareStatement("Select * from Empleado WHERE dniEmpleado=?");
 
@@ -71,6 +76,8 @@ public class EmpleadoDAO {
 				e.setDni(rs.getString("dniEmpleado"));
 				e.setNombre(rs.getString("nombre"));
 				e.setTurno(rs.getString("turno"));
+				
+				rdao.setRoles(e);
 			}
 
 		} catch (SQLException ex) {
@@ -105,6 +112,18 @@ public class EmpleadoDAO {
 			stmt.setString(4, e.getPassword());
 
 			stmt.executeUpdate();
+			
+			for (Rol r : e.getColeccionRoles()) {
+				
+				stmt = DbConnector.getInstancia().getConn()
+						.prepareStatement("INSERT INTO empleado_rol (dniEmpleado,idRol) VALUES (?,?)");
+				
+				stmt.setString(1, e.getDni());
+				stmt.setInt(2, r.getId());
+
+				stmt.executeUpdate();
+			}
+			
 
 		} catch (SQLException ex) {
 			ex.printStackTrace();
