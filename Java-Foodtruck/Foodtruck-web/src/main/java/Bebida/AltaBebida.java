@@ -10,9 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import data.BebidaDAO;
-import data.PlatoDAO;
 import entities.Bebida;
-import entities.Plato;
+
 
 /**
  * Servlet implementation class AltaBebida
@@ -49,10 +48,9 @@ public class AltaBebida extends HttpServlet {
 		
 		
 		
-		// TODO Auto-generated method stub
     	
     	
-    	int id = Integer.parseInt(request.getParameter("id"));
+    	int id = 0;
 		float precio = Float.parseFloat(request.getParameter("precio"));
 		String nombre = request.getParameter("nombre");
 		float litros = Float.parseFloat(request.getParameter("litros"));

@@ -50,7 +50,7 @@ public class AltaPlato extends HttpServlet {
 		// TODO Auto-generated method stub
 		
 		//doGet(request, response);
-		int id = Integer.parseInt(request.getParameter("id"));
+		int id = 0;
 		String nombre = request.getParameter("nombre");
 		String receta = request.getParameter("receta");
 		float precio = Float.parseFloat(request.getParameter("precio"));

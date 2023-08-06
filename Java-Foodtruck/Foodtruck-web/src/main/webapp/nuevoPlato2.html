@@ -20,25 +20,28 @@
         </div>
     </header>
 	<div class="form">
-        <form action="AltaBebida" method="POST">
-			
+        <form action="AltaPlato" method="post">
             <div class="form__container">
-                <h1>Alta bebida</h1>
-                <div class="form__item">
+                <h1>Alta Plato</h1>
+                 <div class="form__item">
                     <label>ID</label>
                     <input type="text" name="id"  maxlength="8" disabled="disabled" value="Automatic Generate">
                 </div>
+                <div class="form__item">
+                    <label>Nombre</label>
+                    <input name="nombre">
+                </div>
                   <div class="form__item">
-                    <label>precio</label>
+                    <label>Receta</label>
+                    <input name="receta">
+                </div>
+                 <div class="form__item">
+                    <label>Precio</label>
                     <input name="precio">
                 </div>
                  <div class="form__item">
-                    <label>nombre</label>
-                    <input name="nombre">
-                </div>
-                 <div class="form__item">
-                    <label>litros</label>
-                    <input name="litros">
+                    <label>Descripcion</label>
+                    <input name="descripcion">
                 </div>
                  <button class="button" type="submit">Agregar</button>
                </div>

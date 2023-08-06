@@ -62,7 +62,7 @@
 	</div>
 
 		
-		<a class="button" href="nuevoPlato.html">Nuevo Plato</a>
+		<a class="button" href="nuevoPlato2.html">Nuevo Plato</a>
 	</div>
 
 </body>
